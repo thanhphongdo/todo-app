@@ -1,7 +1,7 @@
-import { useTodoContext } from "../../../providers/editor/TodoProvider.Context";
-import { TodoItem } from "./TodoItem";
+import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
+import { TodoItem } from "../TodoItem";
 
-export function ContentUnchecked() {
+export function UncheckedContent() {
   const { getUncheckedItems } = useTodoContext();
   return (
     <>

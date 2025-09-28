@@ -98,7 +98,7 @@ function ItemRightSide({
       ].join(" ")}
     >
       <div
-        className="hover:bg-gray-700 rounded-full p-1 cursor-pointer"
+        className="hover:bg-gray-700 hover:text-white rounded-full p-1 cursor-pointer"
         onClick={() => {
           removeItem(id);
         }}

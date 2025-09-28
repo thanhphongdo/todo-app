@@ -1,11 +1,12 @@
 import { Box } from "@mantine/core";
-import { TodoProvider } from "../../../providers/editor/TodoProvider";
-import { Placeholder } from "./Placeholder";
-import { useTodoContext } from "../../../providers/editor/TodoProvider.Context";
-import { EditorMode } from "../../../definitions";
-import { Content } from "./Content";
-import { Title } from "./Title";
-import { Actions } from "./actions/Actions";
+import { TodoProvider } from "../../providers/editor/TodoProvider";
+import { useTodoContext } from "../../providers/editor/TodoProvider.Context";
+import { EditorMode } from "../../definitions";
+import { Placeholder } from "./shared/Placeholder";
+import { Title } from "./shared/Title";
+import { Content } from "./shared/contents/Content";
+import { Actions } from "./shared/actions/Actions";
+import { TagList } from "./shared/tags/TagList";
 
 export function EditorContent() {
   const { editorMode, setEditorMode, addNewItem, backgroundColor } =
@@ -34,6 +35,9 @@ export function EditorContent() {
             <Content />
           </>
         )}
+      </div>
+      <div className="px-2">
+        <TagList />
       </div>
       <Actions />
     </Box>
