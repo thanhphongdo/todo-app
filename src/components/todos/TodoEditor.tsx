@@ -13,7 +13,7 @@ export function EditorContent() {
     useTodoContext();
   return (
     <Box
-      className="border border-gray-500 rounded-lg max-h-[40rem] flex flex-col"
+      className="border border-gray-500 rounded-lg flex flex-col"
       style={{
         backgroundColor: backgroundColor,
       }}
@@ -24,7 +24,7 @@ export function EditorContent() {
         }}
       >
         <div
-          className="overflow-y-auto flex-1"
+          className="max-h-[40rem] overflow-y-auto flex-1"
           onClick={() => {
             if (editorMode === EditorMode.EDITING) {
               return;

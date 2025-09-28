@@ -104,7 +104,7 @@ export function useTodoManager({ initialTodo }: { initialTodo?: Todo }) {
       id,
       mode: editorMode,
       title,
-      items: Array.from(itemsMap.values()),
+      items: itemIds.map((id) => itemsMap.get(id)!),
       tags,
       backgroundColor,
       textColor,

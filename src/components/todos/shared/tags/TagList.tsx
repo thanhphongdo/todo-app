@@ -6,7 +6,7 @@ export function TagList() {
   const { tags, id, textColor } = useTodoContext();
   const minTag = 3;
   const moreTags = tags.length - minTag;
-  return (
+  return tags.length > 0 ? (
     <div className="flex flex-wrap gap-1 p-2">
       {tags.slice(0, minTag).map((tag) => (
         <TagItem key={tag} value={tag} todoId={id} />
@@ -33,5 +33,7 @@ export function TagList() {
         </Popover>
       )}
     </div>
+  ) : (
+    <></>
   );
 }

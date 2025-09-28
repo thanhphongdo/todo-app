@@ -36,7 +36,7 @@ function ViewContent() {
   const { backgroundColor, textColor, title } = useTodoContext();
   return (
     <Box
-      className="border border-gray-500 rounded-lg max-h-[40rem] flex flex-col relative"
+      className="border border-gray-500 rounded-lg flex flex-col relative"
       style={{
         backgroundColor: backgroundColor,
       }}
@@ -47,7 +47,7 @@ function ViewContent() {
         }}
       >
         <RemoveTodo />
-        <div className="overflow-y-auto flex-1">
+        <div className="max-h-[24rem] overflow-y-auto flex-1">
           {!!title && <Title />}
           <Content />
         </div>

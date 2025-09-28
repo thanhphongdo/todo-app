@@ -5,7 +5,7 @@ export function SwitchTheme() {
   const { setColorScheme, colorScheme } = useMantineColorScheme();
   return (
     <ActionIcon
-      className="!absolute bottom-4 right-4"
+      className="!fixed bottom-4 right-4"
       onClick={() => setColorScheme(colorScheme === "light" ? "dark" : "light")}
       variant="default"
       size="xl"

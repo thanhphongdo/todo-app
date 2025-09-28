@@ -4,6 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { EditorMode, ItemMode } from "../../../definitions";
 import { useTodoContext } from "../../../providers/editor/TodoProvider.Context";
 import { useTodoListStore } from "../../../stores/store";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
 export type Props = { id: string; mode: ItemMode };
 
@@ -12,17 +14,39 @@ export function TodoItem({ id, mode }: Props) {
   const [isShowRemoveIcon, setIsShowRemoveIcon] = useState(false);
   const { editorMode } = useTodoContext();
 
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    opacity: isDragging ? 0.5 : 1,
+  };
+
   return (
     <div
+      ref={setNodeRef}
+      style={style}
       className={[
         "flex gap-1 border-y pb-1 p-2 items-start",
         mode === ItemMode.EDITING ? "pt-3" : "pt-1",
         isFocused ? "border-gray-600" : "border-transparent",
+        isDragging ? "bg-gray-800/50" : "",
       ].join(" ")}
       onMouseEnter={() => setIsShowRemoveIcon(true)}
       onMouseLeave={() => setIsShowRemoveIcon(false)}
     >
-      <ItemLeftSide id={id} mode={mode} />
+      <ItemLeftSide
+        id={id}
+        mode={mode}
+        dragHandleProps={{ ...listeners, ...attributes }}
+      />
       <ItemContent id={id} mode={mode} setIsFocused={setIsFocused} />
       {editorMode === EditorMode.EDITING && (
         <ItemRightSide
@@ -35,15 +59,24 @@ export function TodoItem({ id, mode }: Props) {
   );
 }
 
-function ItemLeftSide({ id, mode }: Props) {
+function ItemLeftSide({
+  id,
+  mode,
+  dragHandleProps,
+}: Props & { dragHandleProps?: any }) {
   const { updateItem, getTodo, itemsMap, editorMode } = useTodoContext();
-
   const { updateTodo } = useTodoListStore();
   const currentItem = useMemo(() => itemsMap.get(id), [itemsMap, id]);
+
   return (
     <div className="flex justify-start items-center">
       {mode === ItemMode.EDITING && editorMode === EditorMode.EDITING && (
-        <IconGripVertical size={20} />
+        <span
+          {...dragHandleProps}
+          className="cursor-grab active:cursor-grabbing touch-none"
+        >
+          <IconGripVertical size={20} />
+        </span>
       )}
       {mode === ItemMode.VIEWING && editorMode === EditorMode.EDITING && (
         <div className="w-5"></div>
@@ -52,9 +85,7 @@ function ItemLeftSide({ id, mode }: Props) {
         checked={currentItem?.checked ?? false}
         size="xs"
         color="#424242"
-        styles={{
-          input: { cursor: "pointer", userSelect: "none" },
-        }}
+        styles={{ input: { cursor: "pointer", userSelect: "none" } }}
         onChange={(e) => {
           updateItem(id, {
             ...currentItem!,
@@ -65,18 +96,17 @@ function ItemLeftSide({ id, mode }: Props) {
             const todo = getTodo();
             updateTodo({
               ...todo,
-              items: todo.items.map((item) => {
-                if (item.id === id) {
-                  return {
-                    ...item,
-                    checked: e.target.checked,
-                    mode: e.target.checked
-                      ? ItemMode.VIEWING
-                      : ItemMode.EDITING,
-                  };
-                }
-                return item;
-              }),
+              items: todo.items.map((item) =>
+                item.id === id
+                  ? {
+                      ...item,
+                      checked: e.target.checked,
+                      mode: e.target.checked
+                        ? ItemMode.VIEWING
+                        : ItemMode.EDITING,
+                    }
+                  : item
+              ),
             });
           }
         }}
