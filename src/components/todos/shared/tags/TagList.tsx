@@ -3,8 +3,8 @@ import { useTodoContext } from "../../../../providers/editor/TodoProvider.Contex
 import { TagItem } from "./TagItem";
 
 export function TagList() {
-  const { tags, id } = useTodoContext();
-  const minTag = 2;
+  const { tags, id, textColor } = useTodoContext();
+  const minTag = 3;
   const moreTags = tags.length - minTag;
   return (
     <div className="flex flex-wrap gap-1 p-2">
@@ -14,7 +14,12 @@ export function TagList() {
       {moreTags > 0 && (
         <Popover width={320} position="bottom" withArrow shadow="md">
           <Popover.Target>
-            <div className="text-xs flex gap-2 justify-center items-center p-1 min-w-8 max-w-32 border border-gray-600 rounded-md cursor-pointer">
+            <div
+              className="text-xs flex gap-2 justify-center items-center p-1 min-w-8 max-w-32 border rounded-md cursor-pointer"
+              style={{
+                borderColor: textColor === "#00000000" ? "#4b5563" : textColor,
+              }}
+            >
               +{moreTags}
             </div>
           </Popover.Target>

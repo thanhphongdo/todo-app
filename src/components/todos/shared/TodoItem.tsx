@@ -141,6 +141,7 @@ function ItemContent({
               border: "none",
               backgroundColor: "transparent",
               padding: 0,
+              color: "inherit",
             },
           }}
           onChange={(e) => {

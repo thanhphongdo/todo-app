@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { EditorMode, Item, ItemMode, Todo } from "../definitions";
 import { v4 } from "uuid";
 import { useTodoListStore } from "../stores/store";
+import { useMantineColorScheme } from "@mantine/core";
 
 export function useTodoManager({ initialTodo }: { initialTodo?: Todo }) {
   const { addTodo } = useTodoListStore();
@@ -11,6 +12,7 @@ export function useTodoManager({ initialTodo }: { initialTodo?: Todo }) {
   const [itemIds, setItemIds] = useState<string[]>([]);
   const [itemsMap, setItemsMap] = useState<Map<string, Item>>(new Map());
   const [backgroundColor, setBackgroundColor] = useState<string>("#00000000");
+  const [textColor, setTextColor] = useState<string>("#00000000");
   const [tags, setTags] = useState<string[]>([]);
 
   const textAreaRefs = useRef<
@@ -28,6 +30,7 @@ export function useTodoManager({ initialTodo }: { initialTodo?: Todo }) {
       );
       setTags(initialTodo.tags);
       setBackgroundColor(initialTodo.backgroundColor || "#00000000");
+      setTextColor(initialTodo.textColor || "#00000000");
     }
   }, [initialTodo]);
 
@@ -104,6 +107,7 @@ export function useTodoManager({ initialTodo }: { initialTodo?: Todo }) {
       items: Array.from(itemsMap.values()),
       tags,
       backgroundColor,
+      textColor,
     };
     return todo;
   };
@@ -115,6 +119,7 @@ export function useTodoManager({ initialTodo }: { initialTodo?: Todo }) {
     setItemIds([]);
     setItemsMap(new Map());
     setBackgroundColor("#00000000");
+    setTextColor("#00000000");
     setTags([]);
   };
   const save = () => {
@@ -144,6 +149,8 @@ export function useTodoManager({ initialTodo }: { initialTodo?: Todo }) {
     setItemsMap,
     backgroundColor,
     setBackgroundColor,
+    textColor,
+    setTextColor,
     tags,
     setTags,
     textAreaRefs,

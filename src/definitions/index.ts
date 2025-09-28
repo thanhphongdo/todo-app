@@ -22,6 +22,7 @@ export type Todo = {
   title: string;
   items: Item[];
   backgroundColor: string | null;
+  textColor: string | null;
   tags: string[];
 };
 

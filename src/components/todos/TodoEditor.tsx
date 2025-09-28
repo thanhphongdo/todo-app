@@ -9,7 +9,7 @@ import { Actions } from "./shared/actions/Actions";
 import { TagList } from "./shared/tags/TagList";
 
 export function EditorContent() {
-  const { editorMode, setEditorMode, addNewItem, backgroundColor } =
+  const { editorMode, setEditorMode, addNewItem, backgroundColor, textColor } =
     useTodoContext();
   return (
     <Box
@@ -19,27 +19,33 @@ export function EditorContent() {
       }}
     >
       <div
-        className="overflow-y-auto flex-1"
-        onClick={() => {
-          if (editorMode === EditorMode.EDITING) {
-            return;
-          }
-          setEditorMode(EditorMode.EDITING);
-          addNewItem();
+        style={{
+          color: textColor === "#00000000" ? "inherit" : textColor,
         }}
       >
-        {editorMode === EditorMode.INITIAL && <Placeholder />}
-        {editorMode === EditorMode.EDITING && (
-          <>
-            <Title />
-            <Content />
-          </>
-        )}
+        <div
+          className="overflow-y-auto flex-1"
+          onClick={() => {
+            if (editorMode === EditorMode.EDITING) {
+              return;
+            }
+            setEditorMode(EditorMode.EDITING);
+            addNewItem();
+          }}
+        >
+          {editorMode === EditorMode.INITIAL && <Placeholder />}
+          {editorMode === EditorMode.EDITING && (
+            <>
+              <Title />
+              <Content />
+            </>
+          )}
+        </div>
+        <div className="px-2">
+          <TagList />
+        </div>
+        <Actions />
       </div>
-      <div className="px-2">
-        <TagList />
-      </div>
-      <Actions />
     </Box>
   );
 }

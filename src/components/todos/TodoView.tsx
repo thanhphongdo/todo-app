@@ -33,7 +33,7 @@ function RemoveTodo() {
 }
 
 function ViewContent() {
-  const { backgroundColor, title } = useTodoContext();
+  const { backgroundColor, textColor, title } = useTodoContext();
   return (
     <Box
       className="border border-gray-500 rounded-lg max-h-[40rem] flex flex-col relative"
@@ -41,13 +41,19 @@ function ViewContent() {
         backgroundColor: backgroundColor,
       }}
     >
-      <RemoveTodo />
-      <div className="overflow-y-auto flex-1">
-        {!!title && <Title />}
-        <Content />
+      <div
+        style={{
+          color: textColor === "#00000000" ? "inherit" : textColor,
+        }}
+      >
+        <RemoveTodo />
+        <div className="overflow-y-auto flex-1">
+          {!!title && <Title />}
+          <Content />
+        </div>
+        <TagList />
+        <Actions />
       </div>
-      <TagList />
-      <Actions />
     </Box>
   );
 }

@@ -6,12 +6,14 @@ import { Collaborators } from "./Collaborators";
 import { UploadImage } from "./UploadImage";
 import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
 import { EditorMode } from "../../../../definitions";
+import { ChangeTextColor } from "./ChangeTextColor";
 
 export function Actions() {
   const { close, save, editorMode } = useTodoContext();
   return (
     <div className="px-4 py-2 flex items-center gap-4">
       <ChangeBackground />
+      <ChangeTextColor />
       <AddTag />
       <Remind />
       <Collaborators />

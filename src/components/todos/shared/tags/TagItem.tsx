@@ -6,11 +6,15 @@ import { useTodoListStore } from "../../../../stores/store";
 
 export function TagItem({ value, todoId }: { value: string; todoId: string }) {
   const [showRemoveIcon, setShowRemoveIcon] = useState(false);
-  const { tags, editorMode, setTags, getTodo } = useTodoContext();
+  const { tags, editorMode, textColor, setTags, getTodo } = useTodoContext();
   const { updateTodo } = useTodoListStore();
   return (
     <div
-      className="text-xs flex gap-2 justify-center items-center p-1 min-w-14 max-w-32 border border-gray-600 rounded-xl"
+      className="text-xs flex gap-2 justify-center items-center p-1 min-w-14 max-w-32 border rounded-xl"
+      style={{
+        borderColor: textColor === "#00000000" ? "#4b5563" : textColor,
+        color: textColor === "#00000000" ? "inherit" : textColor,
+      }}
       onMouseEnter={() => setShowRemoveIcon(true)}
       onMouseLeave={() => setShowRemoveIcon(false)}
     >

@@ -14,8 +14,20 @@ export function Layout({ children }: PropsWithChildren) {
     >
       <AppShell.Header>
         <Group h="100%" px="md">
-          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-          Todo List App
+          <div className="flex items-center justify-center w-full relative">
+            <Burger
+              className="absolute z-10 left-0"
+              opened={opened}
+              onClick={toggle}
+              hiddenFrom="sm"
+              size="sm"
+            />
+            <div className="flex-1 text-center">
+              <Text size="xl" fw={600} className="font-fredoka">
+                Todo List App
+              </Text>
+            </div>
+          </div>
         </Group>
       </AppShell.Header>
       <AppShell.Main>{children}</AppShell.Main>
