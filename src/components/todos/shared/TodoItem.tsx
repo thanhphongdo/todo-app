@@ -101,9 +101,6 @@ function ItemLeftSide({
                   ? {
                       ...item,
                       checked: e.target.checked,
-                      mode: e.target.checked
-                        ? ItemMode.VIEWING
-                        : ItemMode.EDITING,
                     }
                   : item
               ),
