@@ -4,7 +4,7 @@ import { AddTag } from "./AddTag";
 import { Remind } from "./Remind";
 import { Collaborators } from "./Collaborators";
 import { UploadImage } from "./UploadImage";
-import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../../providers/TodoProvider.Context";
 import { EditorMode } from "../../../../definitions";
 import { ChangeTextColor } from "./ChangeTextColor";
 

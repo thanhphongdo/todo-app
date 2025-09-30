@@ -1,6 +1,6 @@
 import { IconX } from "@tabler/icons-react";
 import { useState } from "react";
-import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../../providers/TodoProvider.Context";
 import { EditorMode } from "../../../../definitions";
 import { useTodoListStore } from "../../../../stores/store";
 

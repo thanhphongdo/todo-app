@@ -1,6 +1,6 @@
 import { Popover, TagsInput } from "@mantine/core";
 import { IconTag } from "@tabler/icons-react";
-import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../../providers/TodoProvider.Context";
 import { useTodoListStore } from "../../../../stores/store";
 import { EditorMode } from "../../../../definitions";
 

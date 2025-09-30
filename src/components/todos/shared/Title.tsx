@@ -1,5 +1,5 @@
 import { TextInput } from "@mantine/core";
-import { useTodoContext } from "../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../providers/TodoProvider.Context";
 
 export function Title() {
   const { title, setTitle } = useTodoContext();

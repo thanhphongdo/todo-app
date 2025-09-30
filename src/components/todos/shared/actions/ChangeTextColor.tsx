@@ -1,6 +1,6 @@
-import { ColorPicker, DEFAULT_THEME, Popover, Text } from "@mantine/core";
+import { ColorPicker, DEFAULT_THEME, Popover } from "@mantine/core";
 import { IconBaseline } from "@tabler/icons-react";
-import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../../providers/TodoProvider.Context";
 import { EditorMode } from "../../../../definitions";
 import { useTodoListStore } from "../../../../stores/store";
 

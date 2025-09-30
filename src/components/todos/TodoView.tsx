@@ -1,13 +1,12 @@
 import { Box } from "@mantine/core";
-import { TodoProvider } from "../../providers/editor/TodoProvider";
-import { useTodoContext } from "../../providers/editor/TodoProvider.Context";
+import { TodoProvider } from "../../providers/TodoProvider";
+import { useTodoContext } from "../../providers/TodoProvider.Context";
 import { Todo } from "../../definitions";
 import { IconX } from "@tabler/icons-react";
 import { useTodoListStore } from "../../stores/store";
 import { Title } from "./shared/Title";
 import { Content } from "./shared/contents/Content";
 import { Actions } from "./shared/actions/Actions";
-import { useState } from "react";
 import { TagList } from "./shared/tags/TagList";
 
 function RemoveTodo() {

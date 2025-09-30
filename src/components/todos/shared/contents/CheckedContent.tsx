@@ -2,7 +2,7 @@ import { Text } from "@mantine/core";
 import { TodoItem } from "../TodoItem";
 import { useDisclosure } from "@mantine/hooks";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
-import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../../providers/TodoProvider.Context";
 
 export function CheckedContent() {
   const [opened, { toggle }] = useDisclosure(true);

@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { EditorMode, Item, ItemMode, Todo } from "../definitions";
 import { v4 } from "uuid";
 import { useTodoListStore } from "../stores/store";
-import { useMantineColorScheme } from "@mantine/core";
 
 export function useTodoManager({ initialTodo }: { initialTodo?: Todo }) {
   const { addTodo } = useTodoListStore();

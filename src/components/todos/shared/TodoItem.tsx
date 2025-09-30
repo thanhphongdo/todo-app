@@ -2,7 +2,7 @@ import { Checkbox, Text, Textarea } from "@mantine/core";
 import { IconGripVertical, IconX } from "@tabler/icons-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { EditorMode, ItemMode } from "../../../definitions";
-import { useTodoContext } from "../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../providers/TodoProvider.Context";
 import { useTodoListStore } from "../../../stores/store";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";

@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { useTodoManager } from "../../hooks/use-todo-manager";
+import { useTodoManager } from "../hooks/use-todo-manager";
 
 export type ContextValue = ReturnType<typeof useTodoManager>;
 

@@ -1,6 +1,6 @@
 import { Box } from "@mantine/core";
-import { TodoProvider } from "../../providers/editor/TodoProvider";
-import { useTodoContext } from "../../providers/editor/TodoProvider.Context";
+import { TodoProvider } from "../../providers/TodoProvider";
+import { useTodoContext } from "../../providers/TodoProvider.Context";
 import { EditorMode } from "../../definitions";
 import { Placeholder } from "./shared/Placeholder";
 import { Title } from "./shared/Title";

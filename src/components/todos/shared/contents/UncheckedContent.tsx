@@ -9,7 +9,7 @@ import {
   verticalListSortingStrategy,
   arrayMove,
 } from "@dnd-kit/sortable";
-import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../../providers/TodoProvider.Context";
 import { TodoItem } from "../TodoItem";
 import { useState } from "react";
 import { createPortal } from "react-dom";

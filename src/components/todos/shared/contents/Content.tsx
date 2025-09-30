@@ -1,5 +1,5 @@
 import { EditorMode } from "../../../../definitions";
-import { useTodoContext } from "../../../../providers/editor/TodoProvider.Context";
+import { useTodoContext } from "../../../../providers/TodoProvider.Context";
 import { AddItem } from "../AddItem";
 import { CheckedContent } from "./CheckedContent";
 import { UncheckedContent } from "./UncheckedContent";
